@@ -12,6 +12,7 @@ const counterSlice = createSlice({
     reducers: {
         increment(state) {
             state.value += Math.floor(Math.random() * 10) + 1; // ランダムな数値をインクリメント
+            state.isEven = state.value % 2 === 0; // 奇数か偶数かを判定
         },
         decrement(state) {
             state.value -= 1;
