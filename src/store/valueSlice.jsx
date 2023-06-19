@@ -1,5 +1,23 @@
 // import de la fonction
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+// 非同期なカウンターのインクリメント関数を定義 Définir une fonction d'incrémentation de compteur asynchrone
+const incrementAsync = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 2000); // 2秒待ってから解決する
+    });
+};
+
+// createAsyncThunkを使用して非同期なアクションを作成
+export const incrementAsyncThunk = createAsyncThunk(
+    'counter/incrementAsync',
+    async (_, { dispatch }) => {
+        await incrementAsync(); // 非同期なカウンターのインクリメント関数を実行
+        dispatch(increment()); // 通常のインクリメントアクションをディスパッチ
+    }
+);
 
 // définit un state
 const initialState = { value: 0,  isEven: true};
