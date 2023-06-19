@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { increment, incrementAsyncThunk, decrement } from './store/valueSlice';
+import {useSelector, useDispatch} from 'react-redux';
+import {increment, incrementAsyncThunk, decrement} from './store/valueSlice';
 
 function App() {
     const dispatch = useDispatch();
@@ -8,8 +8,12 @@ function App() {
 
     const handleIncrement = () => {
         dispatch(increment());
-        dispatch(incrementAsyncThunk());
+
     };
+
+    const handleIncrementAsync = () => {
+        dispatch(incrementAsyncThunk());
+    }
 
     // const handleDecrement = () => {
     //     dispatch(decrement());
@@ -20,7 +24,7 @@ function App() {
             <h1>Counter: {count}</h1>
             <p>{isEven ? 'Even' : 'odd'}</p>
             <button onClick={handleIncrement}>Increment</button>
-            <button onClick={handleIncrement}>Async counter</button>
+            <button onClick={handleIncrementAsync}>Async counter</button>
             {/*<button onClick={handleDecrement}>Decrement</button>*/}
         </div>
     );
