@@ -36,7 +36,7 @@ const counterSlice = createSlice({
         });
     },
 });
-
+//test comment
 //Exercice 3 : middleware
 const customMiddleware = (store) => (next) => (action) => {
     // ミドルウェアの処理を記述します
