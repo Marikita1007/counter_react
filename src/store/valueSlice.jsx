@@ -15,9 +15,6 @@ export const incrementAsyncThunk = createAsyncThunk(
     'counter/incrementAsync',
     async (_, { dispatch }) => {
         await incrementAsync();
-        console.log("Hello0");
-        dispatch(increment()); // 通常のインクリメントアクションをディスパッチする
-        console.log("Hello1");
         return 1;
     }
 );
@@ -36,10 +33,15 @@ const counterSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(incrementAsyncThunk.fulfilled, (state, action) => {
             state.asyncValue += action.payload; // 非同期カウンターの値を増加させる
-            console.log("Hello2");
         });
     },
 });
+
+//Exercice 3 : middleware
+const customMiddleware = (store) => (next) => (action) => {
+    // ミドルウェアの処理を記述します
+};
+
 
 export const { increment } = counterSlice.actions;
 
